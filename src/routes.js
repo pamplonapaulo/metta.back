@@ -5,6 +5,7 @@ const SeatingController = require('./controllers/SeatingController')
 const ProfileController = require('./controllers/ProfileController')
 const SessionController = require('./controllers/SessionController')
 const PlacesController = require('./controllers/PlacesController')
+const ScheduleController = require('./controllers/ScheduleController')
 
 const routes = express.Router()
 
@@ -23,5 +24,9 @@ routes.delete('/seatings/:id', SeatingController.delete)
 routes.get('/places', PlacesController.index)
 routes.post('/places', PlacesController.create)
 routes.delete('/places/:id', PlacesController.delete)
+
+routes.get('/schedule', ScheduleController.index)
+routes.post('/schedule', ScheduleController.create)
+routes.delete('/schedule/:id', ScheduleController.delete)
 
 module.exports = routes
