@@ -3,12 +3,6 @@ const connection = require('../database/connection')
 module.exports = {
 
   async index(request, response) {
-    //const { page = 1 } = request.query
-
-    // console.log(' ')
-    // console.log('request.query is:')
-    // console.log(request.query)
-    // console.log(' ')
 
     const { latitude, longitude, doctrine } = request.query;
 
@@ -19,21 +13,13 @@ module.exports = {
 
     const places = await connection('places')
       .join('users', 'users.id', '=', 'places.owner_id')
-      //.limit(5)
-      //.offset((page - 1) * 5)
       .select([
         'places.*', 
-        //'users.name', 
-        'users.email', 
-        //'users.whatsapp', 
-        //'users.city', 
-        //'users.uf'
+        'users.email'
       ])
       .where('doctrine', doctrine)
     
     response.header('X-Total-Count', count['count(*)'])
-
-    console.log(count)
 
     return response.json(places)
   },
