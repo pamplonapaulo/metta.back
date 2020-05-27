@@ -6,6 +6,7 @@ const ProfileController = require('./controllers/ProfileController')
 const SessionController = require('./controllers/SessionController')
 const PlacesController = require('./controllers/PlacesController')
 const ScheduleController = require('./controllers/ScheduleController')
+const RitualsController = require('./controllers/RitualsController')
 
 const routes = express.Router()
 
@@ -28,5 +29,9 @@ routes.delete('/places/:id', PlacesController.delete)
 routes.get('/schedule', ScheduleController.index)
 routes.post('/schedule', ScheduleController.create)
 routes.delete('/schedule/:id', ScheduleController.delete)
+
+routes.get('/rituals', RitualsController.index)
+routes.post('/rituals', RitualsController.create)
+routes.delete('/rituals/:id', RitualsController.delete)
 
 module.exports = routes
